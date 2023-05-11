@@ -458,6 +458,7 @@ if __name__ == '__main__':
             print("alice value is:", a, "/", "bob bob value is: ", b, "/", "output value is: ", o, "/",
                   "the predict result is", real_result)
 
+        # Now, I can close the files
         input_alice.close()
         input_bob.close()
         out_max.close()
