@@ -57,8 +57,11 @@ def check_input(input:str):
         return True
 
 def clean_string(a:str):
-
-
+    # This function is used for clean the string
+    # Examples:   [1,1,1,1] ---> 1111
+    #             [1,0,1,0] ---> 1010
+    #             1 1 1 1 ---> 1111
+    #             1 0 1 0 ---> 1010
     if (a == ""):
         return a
     elif a[0] == "[":
@@ -107,6 +110,7 @@ class Alice(YaoGarbler):
 
         print(f"======== {circuit['id']} ========")
 
+        #The following part of the code allows you to insert Alice's input
         while True:
             input_set: list = []
             while (input_set == [] or (input_set[-1] != "end" and input_set[-1] != "q" )):
@@ -205,8 +209,8 @@ class Bob:
         b_wires = circuit.get("bob", [])  # list of Bob's wires
         outputs = circuit["out"]
 
+        # The following part of the code allows you to insert Bob's input
         while True:
-
             print(f"Received {circuit['id']}")
 
             input_set: list = []
@@ -262,12 +266,14 @@ class Bob:
             print(f"  Bob{a_wires} = {str_bits_b} "
                   f"Outputs{outputs} = {str_result}")
 
-            # scrivo l'output della funzione nel file output
+            # I write the Bob's output in bob_output.txt
+            # This file will be used at the end to see if the result has been calculated correctly
             output_file = open("output_function.txt", "a")
             output_file.write(str_result + "\n")
             output_file.close()
 
-            # scrivo l'input di bob sul file bob_input
+            # I write the Bob's input in alice_input.txt
+            # This file will be used at the end to see if the result has been calculated correctly
             bob_file = open("bob_input.txt", "a")
             bob_file.write(input_b + "\n")
             bob_file.close()
@@ -426,6 +432,8 @@ if __name__ == '__main__':
     init()
 
     def verfiy_output(a_in, b_in, out):
+        # This function is used for check the final results.
+
         input_alice = open(a_in, "r")
         input_bob = open(b_in, "r")
         out_max = open(out, "r")
