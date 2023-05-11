@@ -34,6 +34,12 @@ class YaoGarbler(ABC):
         pass
 
 def check_input(input:str):
+
+    # This function is used for check the input of Alice and Bob.
+    # The correct format of the input is [d,d,d,d] where d are digits (0 or 1)
+    #
+    # The input is a string, the output is True if the input's format in correct False otherwise
+
     if (len(input) != 9):
         return False
 
@@ -50,7 +56,9 @@ def check_input(input:str):
     else:
         return True
 
-def clean_string(a: str):
+def clean_string(a:str):
+
+
     if (a == ""):
         return a
     elif a[0] == "[":
@@ -62,12 +70,7 @@ class Alice(YaoGarbler):
     """Alice is the creator of the Yao circuit.
 
     Alice creates a Yao circuit and sends it to the evaluator along with her
-    encrypted inputs. Alice will finally print the truth table of the circuit
-    for all combination of Alice-Bob inputs.
-
-    Alice does not know Bob's inputs but for the purpose
-    of printing the truth table only, Alice assumes that Bob's inputs follow
-    a specific order.
+    encrypted inputs.
 
     Attributes:
         circuits: the JSON file containing circuits
@@ -154,12 +157,11 @@ class Alice(YaoGarbler):
             print(f"  Alice{a_wires} = {str_bits_a} "
                   f"Outputs{outputs} = {str_result}")
 
-            # scrivo l'input di alice sul file alice_input
+            # I write the Alice's input in alice_input.txt
+            # This file will be used at the end to see if the result has been calculated correctly
             alice_file = open("alice_input.txt", "a")
             alice_file.write(input_a + "\n")
             alice_file.close()
-
-
 
         print()
 
@@ -443,10 +445,13 @@ if __name__ == '__main__':
 
             if (a > b) and (o == a):
                 real_result = "CORRECT"
+
             elif (a < b) and (o == b):
                 real_result = "CORRECT"
+
             elif (a == b) and (o == b):
                 real_result = "CORRECT"
+
             else:
                 real_result = "INCORRECT"
 
