@@ -7,7 +7,7 @@
 
 ### This is the visual version of the circuit
 
-![circuit](img.png=250x250)
+![circuit](img.png)
 
 
 
