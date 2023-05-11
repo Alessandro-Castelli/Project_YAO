@@ -38,7 +38,7 @@ def check_input(input:str):
     # This function is used for check the input of Alice and Bob.
     # The correct format of the input is [d,d,d,d] where d are digits (0 or 1)
     #
-    # The input is a string, the output is True if the input's format in correct False otherwise
+    # The input is a string, the output is True if the input's format in correct, False otherwise
 
     if (len(input) != 9):
         return False
