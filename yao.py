@@ -70,6 +70,7 @@ def evaluate(circuit, g_tables, pbits_out, a_inputs, b_inputs):
             encr_msg = g_tables[gate_id][(encr_bit_in, )]
             # Decrypt message
             msg = decrypt(key_in, encr_msg)
+
         # Else the gate has two input wires (same model)
         elif (gate_in[0] in wire_inputs) and (gate_in[1] in wire_inputs):
             key_a, encr_bit_a = wire_inputs[gate_in[0]]
