@@ -1,8 +1,0 @@
-Initial Data: input_a, ObliviuousTransfer
-
-Alice_Comunication(Input_alice, ObliviousTransfer)
-
-     max_circuit ← create_max_circuit
-     garbled_gate ← create_garbled_gate
-     result_of_sending ← send(garbled_gate)
-

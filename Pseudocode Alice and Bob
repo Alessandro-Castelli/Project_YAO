@@ -1,0 +1,21 @@
+Alice_Comunication(ObliviousTransfer, MaxCircuit){
+
+     input ← insert Alice's input;
+     write Alice's input on file;   #This is necessary for finally verification
+     in ← encrypt input;
+     gg ← create garbled tables;
+     result_of_sending ← send_to_OT(gg, in, MaxCircuit);
+     Alice receives final result;
+
+}
+
+Bob_Comunication(ObliviousTransfer){
+
+     input ← insert Bob's input;
+     write Bob's input on file;   #This is necessary for finally verification
+     data ← receive_from_OT;
+     Bob calculates the final result;
+     Bob write the output of the function in an output file
+     Bob sends the results to Alice;
+
+}

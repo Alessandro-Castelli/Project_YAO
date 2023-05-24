@@ -43,7 +43,8 @@ class ObliviousTransfer:
             circuit: A dict containing circuit spec.
             g_tables: Garbled tables of yao circuit.
             pbits_out: p-bits of outputs.
-            b_inputs: A dict mapping Bob's wires to (clear) input bits.
+
+                        _inputs: A dict mapping Bob's wires to (clear) input bits.
         """
         # map from Alice's wires to (key, encr_bit) inputs
         a_inputs = self.socket.receive()
@@ -63,12 +64,11 @@ class ObliviousTransfer:
                 logging.debug(f"Received key pair, key {b_input} selected")
                 b_inputs_encr[w] = pair[b_input]
 
-        result = yao.evaluate(circuit, g_tables, pbits_out, a_inputs,
-                              b_inputs_encr)
+        result = yao.evaluate(circuit, g_tables, pbits_out, a_inputs, b_inputs_encr)
 
         logging.debug("Sending circuit evaluation")
         self.socket.send(result)
-        return result #da me
+        return result
 
     def ot_garbler(self, msgs):
         """Oblivious transfer, Alice's side.

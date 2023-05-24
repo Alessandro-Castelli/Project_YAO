@@ -19,7 +19,7 @@ def encrypt(key, data):
     """
     IV = os.urandom(16)
     data = pad(bytes(data), BLOCK_SIZE)
-    f = AES.new(key=base64.urlsafe_b64decode(key), mode=AES.MODE_CBC, IV=IV) #Fernet(key)
+    f = AES.new(key=base64.urlsafe_b64decode(key), mode=AES.MODE_CBC, IV=IV)
     return f.encrypt(data)+IV
 
 
@@ -34,7 +34,7 @@ def decrypt(key, data):
         The decrypted message as a byte stream.
     """
     IV = data[len(data)-16:]
-    f = AES.new(key=base64.urlsafe_b64decode(key), mode=AES.MODE_CBC, IV=IV) #, iv=IV) #Fernet(key)
+    f = AES.new(key=base64.urlsafe_b64decode(key), mode=AES.MODE_CBC, IV=IV)
     return unpad(f.decrypt(data[:len(data)-16]), BLOCK_SIZE)
 
 
@@ -233,10 +233,8 @@ class GarbledCircuit:
     def _gen_keys(self):
         """Create pair of keys for each wire."""
         for wire in self.wires:
-            """generate_key fa la stessa cosa di Fenrat.generate_key(), ma con la lunghezza che voglio io"""
             def generate_key() -> bytes:
                  return base64.urlsafe_b64encode(os.urandom(KEY_LENGTH))
-            #print("Esempio di chiave:", generate_key())
             self.keys[wire] = (generate_key(), generate_key())
 
     def _gen_garbled_tables(self):

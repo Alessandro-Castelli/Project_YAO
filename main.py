@@ -221,18 +221,22 @@ class Bob:
 
                 if (candidate == "q" or candidate == "end"):
                     input_set = input_set + [candidate]
+
                 elif check_input(candidate):
                     input_set = input_set + [candidate]
                     print("\nThe current set of Bob is: ",input_set)
+
                 else:
                     print("\nThere is a mistake, rewrite the input, Bob's input must be of the type [d,d,d,d]")
 
             if (input_set[-1] == "q"):
+
                 print("\nThe Yao protocol has ended, now i check the results")
                 self.socket.close()
                 break
 
             if (input_set[-1] == "end" and len(input_set) == 1):
+
                 self.socket.close()
                 print("\nIt is impossible calcuate the max of the empty set")
                 break
