@@ -1,3 +1,5 @@
+Pseudocode that i will insert in the report
+
 Alice_Comunication(ObliviousTransfer, MaxCircuit){
 
      input ← insert Alice's input;
