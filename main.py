@@ -9,6 +9,7 @@ from abc import ABC, abstractmethod
 logging.basicConfig(format="[%(levelname)s] %(message)s",
                     level=logging.WARNING)
 
+
 class YaoGarbler(ABC):
     """An abstract class for Yao garblers"""
     def __init__(self, circuits):
@@ -34,6 +35,7 @@ class YaoGarbler(ABC):
     def start(self):
         pass
 
+
 def check_input(input:str):
 
     # This function is used for check the input of Alice and Bob.
@@ -57,6 +59,7 @@ def check_input(input:str):
     else:
         return True
 
+
 def clean_string(a:str):
     # This function is used for clean the string
     # Examples:   [1,1,1,1] ---> 1111
@@ -69,6 +72,7 @@ def clean_string(a:str):
         return a.replace(',', '').replace('[', '').replace(']', '')
     else:
         return a.replace(' ', '')
+
 
 class Alice(YaoGarbler):
     """Alice is the creator of the Yao circuit.
@@ -173,8 +177,10 @@ class Alice(YaoGarbler):
     def _get_encr_bits(self, pbit, key0, key1):
         return ((key0, 0 ^ pbit), (key1, 1 ^ pbit))
 
+
 class Bob:
-    """Bob is the receiver and evaluator of the Yao circuit.
+    """
+    Bob is the receiver and evaluator of the Yao circuit.
 
     Bob receives the Yao circuit from Alice, computes the results and sends
     them back.
@@ -198,8 +204,7 @@ class Bob:
             logging.info("Stop listening")
 
     def send_evaluation(self, entry):
-        """Evaluate yao circuit for all Bob and Alice's inputs and
-        send back the results.
+        """Evaluate yao circuit.
 
         Args:
             entry: A dict representing the circuit to evaluate.

@@ -8,7 +8,8 @@ from Crypto.Util.Padding import pad, unpad
 KEY_LENGTH = 32
 BLOCK_SIZE = 32
 def encrypt(key, data):
-    """Encrypt a message.
+    """
+    Encrypt a message.
 
     Args:
         key: The encryption key.
@@ -24,7 +25,8 @@ def encrypt(key, data):
 
 
 def decrypt(key, data):
-    """Decrypt a message.
+    """
+    Decrypt a message.
 
     Args:
         key: The decryption key.
@@ -39,7 +41,8 @@ def decrypt(key, data):
 
 
 def evaluate(circuit, g_tables, pbits_out, a_inputs, b_inputs):
-    """Evaluate yao circuit with given inputs.
+    """
+    Evaluate yao circuit with given inputs.
 
     Args:
         circuit: A dict containing circuit spec.
@@ -148,7 +151,8 @@ class GarbledGate:
                                                          encr_bit_out]
 
     def _gen_garbled_table(self, operator):
-        """Create the garbled table of a 2-input gate.
+        """
+        Create the garbled table of a 2-input gate.
 
         Args:
             operator: The logical function of to the 2-input gate type.

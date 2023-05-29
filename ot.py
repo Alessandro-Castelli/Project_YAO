@@ -71,7 +71,8 @@ class ObliviousTransfer:
         return result
 
     def ot_garbler(self, msgs):
-        """Oblivious transfer, Alice's side.
+        """
+        Oblivious transfer, Alice's side.
 
         Args:
             msgs: A pair (msg1, msg2) to suggest to Bob.
